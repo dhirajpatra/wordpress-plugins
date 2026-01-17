@@ -1,9 +1,9 @@
 jQuery(document).ready(function ($) {
     'use strict';
 
-    const WCCleaner = {
-        ajaxUrl: wcCleanerData.ajaxUrl,
-        nonce: wcCleanerData.nonce,
+    const CompPrCl = {
+        ajaxUrl: compprclData.ajaxUrl,
+        nonce: compprclData.nonce,
         isProcessing: false,
 
         init: function () {
@@ -14,22 +14,22 @@ jQuery(document).ready(function ($) {
 
         bindEvents: function () {
             // Tab switching
-            $('.wc-cleaner-tab').on('click', this.switchTab.bind(this));
+            $('.compprcl-tab').on('click', this.switchTab.bind(this));
 
             // Product deletion form
-            $('#wc-cleaner-delete-form').on('submit', function (e) { e.preventDefault(); });
+            $('#compprcl-delete-form').on('submit', function (e) { e.preventDefault(); });
 
             // Image scan
-            $('#wc-cleaner-scan-images').on('click', this.scanOrphanedImages.bind(this));
+            $('#compprcl-scan-images').on('click', this.scanOrphanedImages.bind(this));
 
             // Image deletion
-            $('#wc-cleaner-delete-images').on('click', this.deleteOrphanedImages.bind(this));
+            $('#compprcl-delete-images').on('click', this.deleteOrphanedImages.bind(this));
 
             // Confirmation for delete all
-            $('.wc-cleaner-button-delete').on('click', this.handleDeleteSubmit.bind(this));
+            $('.compprcl-button-delete').on('click', this.handleDeleteSubmit.bind(this));
 
             // Option toggles
-            $('.wc-cleaner-option input').on('change', this.updateDeleteSummary.bind(this));
+            $('.compprcl-option input').on('change', this.updateDeleteSummary.bind(this));
         },
 
         initTabs: function () {
@@ -48,12 +48,12 @@ jQuery(document).ready(function ($) {
 
         showTab: function (tab) {
             // Update active tab
-            $('.wc-cleaner-tab').removeClass('nav-tab-active');
-            $(`.wc-cleaner-tab[data-tab="${tab}"]`).addClass('nav-tab-active');
+            $('.compprcl-tab').removeClass('nav-tab-active');
+            $(`.compprcl-tab[data-tab="${tab}"]`).addClass('nav-tab-active');
 
             // Show corresponding content
-            $('.wc-cleaner-tab-content').removeClass('active');
-            $(`#wc-cleaner-tab-${tab}`).addClass('active');
+            $('.compprcl-tab-content').removeClass('active');
+            $(`#compprcl-tab-${tab}`).addClass('active');
         },
 
         initProductCount: function () {
@@ -61,12 +61,12 @@ jQuery(document).ready(function ($) {
                 url: this.ajaxUrl,
                 type: 'POST',
                 data: {
-                    action: 'wccc_get_product_count',
+                    action: 'compprcl_get_product_count',
                     nonce: this.nonce
                 },
                 success: (response) => {
                     if (response.success) {
-                        $('#wc-cleaner-product-count').text(response.data.count);
+                        $('#compprcl-product-count').text(response.data.count);
                     }
                 }
             });
@@ -75,7 +75,7 @@ jQuery(document).ready(function ($) {
         confirmDeleteAll: function (e) {
             const deleteAttached = $('#delete-attached-images').is(':checked');
             const deleteOrphaned = $('#delete-orphaned-images').is(':checked');
-            const productCount = $('#wc-cleaner-product-count').text();
+            const productCount = $('#compprcl-product-count').text();
 
             let message = '🚨 CRITICAL WARNING 🚨\n\n';
             message += 'You are about to PERMANENTLY delete:\n\n';
@@ -115,7 +115,7 @@ jQuery(document).ready(function ($) {
             const $form = $button.closest('form');
 
             $button.prop('disabled', true);
-            $button.html('<span class="wc-cleaner-loader"></span> Processing...');
+            $button.html('<span class="compprcl-loader"></span> Processing...');
 
             // Show progress bar
             this.showProgressBar();
@@ -125,7 +125,7 @@ jQuery(document).ready(function ($) {
 
             // Properly serialize form data including checkboxes
             const formData = new FormData($form[0]);
-            formData.append('action', 'wccc_delete_products_ajax');
+            formData.append('action', 'compprcl_delete_products_ajax');
             formData.append('nonce', this.nonce);
 
             $.ajax({
@@ -156,16 +156,16 @@ jQuery(document).ready(function ($) {
         },
 
         scanOrphanedImages: function () {
-            const $button = $('#wc-cleaner-scan-images');
+            const $button = $('#compprcl-scan-images');
 
             $button.prop('disabled', true);
-            $button.html('<span class="wc-cleaner-loader"></span> Scanning...');
+            $button.html('<span class="compprcl-loader"></span> Scanning...');
 
             $.ajax({
                 url: this.ajaxUrl,
                 type: 'POST',
                 data: {
-                    action: 'wccc_scan_images',
+                    action: 'compprcl_scan_images',
                     nonce: this.nonce
                 },
                 success: (response) => {
@@ -190,23 +190,23 @@ jQuery(document).ready(function ($) {
                 return;
             }
 
-            const $button = $('#wc-cleaner-delete-images');
+            const $button = $('#compprcl-delete-images');
 
             $button.prop('disabled', true);
-            $button.html('<span class="wc-cleaner-loader"></span> Deleting...');
+            $button.html('<span class="compprcl-loader"></span> Deleting...');
 
             $.ajax({
                 url: this.ajaxUrl,
                 type: 'POST',
                 data: {
-                    action: 'wccc_delete_images',
+                    action: 'compprcl_delete_images',
                     nonce: this.nonce
                 },
                 success: (response) => {
                     if (response.success) {
                         this.showResults(response.data, 'images');
                         // Clear scan results display
-                        $('#wc-cleaner-scan-results').html('');
+                        $('#compprcl-scan-results').html('');
                     } else {
                         this.showError('Deletion failed: ' + (response.data.message || 'Unknown error'));
                     }
@@ -223,21 +223,21 @@ jQuery(document).ready(function ($) {
 
         displayScanResults: function (data) {
             let html = `
-                <div class="wc-cleaner-stats">
+                <div class="compprcl-stats">
                     <h4>Scan Results:</h4>
                     <p>Found <strong>${data.count}</strong> orphaned images (${data.size})</p>
                 </div>
             `;
 
             if (data.images && data.images.length > 0) {
-                html += '<div class="wc-cleaner-image-grid">';
+                html += '<div class="compprcl-image-grid">';
 
                 data.images.slice(0, 20).forEach(image => {
-                    const imageUrl = image.thumbnail || wcCleanerData.placeholder;
+                    const imageUrl = image.thumbnail || compprclData.placeholder;
                     html += `
-                        <div class="wc-cleaner-image-item">
+                        <div class="compprcl-image-item">
                             <img src="${imageUrl}" alt="${image.title}" loading="lazy">
-                            <div class="wc-cleaner-image-info">
+                            <div class="compprcl-image-info">
                                 ID: ${image.id}<br>
                                 ${image.size}
                             </div>
@@ -246,7 +246,7 @@ jQuery(document).ready(function ($) {
                 });
 
                 if (data.images.length > 20) {
-                    html += `<div class="wc-cleaner-image-info">+ ${data.images.length - 20} more images</div>`;
+                    html += `<div class="compprcl-image-info">+ ${data.images.length - 20} more images</div>`;
                 }
 
                 html += '</div>';
@@ -254,7 +254,7 @@ jQuery(document).ready(function ($) {
                 // Show delete button
                 html += `
                     <div style="margin-top: 20px;">
-                        <button type="button" id="wc-cleaner-delete-images" class="button button-primary wc-cleaner-button-delete">
+                        <button type="button" id="compprcl-delete-images" class="button button-primary compprcl-button-delete">
                             🗑️ Delete All Orphaned Images (${data.count})
                         </button>
                     </div>
@@ -263,14 +263,14 @@ jQuery(document).ready(function ($) {
                 html += '<p>No orphaned images found. ✅</p>';
             }
 
-            $('#wc-cleaner-scan-results').html(html);
+            $('#compprcl-scan-results').html(html);
 
             // Rebind delete button
-            $('#wc-cleaner-delete-images').on('click', this.deleteOrphanedImages.bind(this));
+            $('#compprcl-delete-images').on('click', this.deleteOrphanedImages.bind(this));
         },
 
         showResults: function (data, type) {
-            let html = '<div class="wc-cleaner-results">';
+            let html = '<div class="compprcl-results">';
 
             if (type === 'delete') {
                 html += '<h3>✅ Deletion Complete!</h3>';
@@ -293,7 +293,7 @@ jQuery(document).ready(function ($) {
                 html += '</ul>';
 
                 if (data.errors && data.errors.length > 0) {
-                    html += '<div class="wc-cleaner-results error" style="margin-top: 15px;">';
+                    html += '<div class="compprcl-results error" style="margin-top: 15px;">';
                     html += '<h4>⚠️ Errors:</h4><ul>';
                     data.errors.forEach(error => {
                         html += `<li>${this.escapeHtml(error)}</li>`;
@@ -311,24 +311,24 @@ jQuery(document).ready(function ($) {
             html += '</div>';
 
             // Insert at top of tab content
-            const $tabContent = $('.wc-cleaner-tab-content.active');
+            const $tabContent = $('.compprcl-tab-content.active');
             $tabContent.prepend(html);
 
             // Scroll to results
             $('html, body').animate({
-                scrollTop: $tabContent.find('.wc-cleaner-results').first().offset().top - 100
+                scrollTop: $tabContent.find('.compprcl-results').first().offset().top - 100
             }, 500);
         },
 
         showError: function (message) {
             const html = `
-                <div class="wc-cleaner-results error">
+                <div class="compprcl-results error">
                     <h3>❌ Error</h3>
                     <p>${this.escapeHtml(message)}</p>
                 </div>
             `;
 
-            $('.wc-cleaner-tab-content.active').prepend(html);
+            $('.compprcl-tab-content.active').prepend(html);
         },
 
         showProcessing: function (show) {
@@ -336,7 +336,7 @@ jQuery(document).ready(function ($) {
 
             if (show) {
                 $('body').append(`
-                    <div id="wc-cleaner-overlay" style="
+                    <div id="compprcl-overlay" style="
                         position: fixed;
                         top: 0;
                         left: 0;
@@ -355,26 +355,26 @@ jQuery(document).ready(function ($) {
                             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
                             text-align: center;
                         ">
-                            <div class="wc-cleaner-loader" style="width: 40px; height: 40px; margin: 0 auto 20px;"></div>
+                            <div class="compprcl-loader" style="width: 40px; height: 40px; margin: 0 auto 20px;"></div>
                             <h3 style="margin: 0 0 10px 0; color: #1e293b;">Processing...</h3>
                             <p style="color: #64748b; margin: 0;">This may take a while for large stores. Please don't close this window.</p>
                         </div>
                     </div>
                 `);
             } else {
-                $('#wc-cleaner-overlay').remove();
+                $('#compprcl-overlay').remove();
             }
         },
 
         showProgressBar: function () {
             const html = `
-                <div class="wc-cleaner-progress" style="margin: 20px 0;">
-                    <div class="wc-cleaner-progress-bar" style="width: 0%;"></div>
+                <div class="compprcl-progress" style="margin: 20px 0;">
+                    <div class="compprcl-progress-bar" style="width: 0%;"></div>
                 </div>
                 <p style="text-align: center; color: #64748b;">Processing deletion...</p>
             `;
 
-            $('#wc-cleaner-delete-form').append(html);
+            $('#compprcl-delete-form').append(html);
 
             // Animate progress bar (simulated)
             let width = 0;
@@ -383,7 +383,7 @@ jQuery(document).ready(function ($) {
                     clearInterval(interval);
                 } else {
                     width += 10;
-                    $('.wc-cleaner-progress-bar').css('width', width + '%');
+                    $('.compprcl-progress-bar').css('width', width + '%');
                 }
             }, 500);
         },
@@ -404,7 +404,7 @@ jQuery(document).ready(function ($) {
                 summary += '. Product images will remain in the media library.';
             }
 
-            $('#wc-cleaner-delete-summary').text(summary);
+            $('#compprcl-delete-summary').text(summary);
         },
 
         escapeHtml: function (text) {
@@ -420,5 +420,5 @@ jQuery(document).ready(function ($) {
     };
 
     // Initialize
-    WCCleaner.init();
+    CompPrCl.init();
 });
