@@ -1,0 +1,504 @@
+/**
+ * Advanced Booking System - Admin Styles
+ *
+ * @package AdvancedBookingSystem
+ */
+
+/* ======================================
+   Admin Page Layout
+   ====================================== */
+
+.abs-admin-wrap {
+    margin: 20px 20px 20px 0;
+}
+
+.abs-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.abs-admin-header h1 {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.abs-admin-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ======================================
+   Bookings Table
+   ====================================== */
+
+.abs-bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.abs-bookings-table thead {
+    background-color: #f9f9f9;
+}
+
+.abs-bookings-table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    color: #555;
+    border-bottom: 2px solid #ddd;
+}
+
+.abs-bookings-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 13px;
+}
+
+.abs-bookings-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.abs-bookings-table .abs-status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.abs-status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.abs-status-badge.confirmed {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.abs-status-badge.cancelled {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.abs-bookings-table .abs-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.abs-bookings-table .abs-action-btn {
+    padding: 4px 8px;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.abs-action-btn.view {
+    color: #0073aa;
+}
+
+.abs-action-btn.view:hover {
+    color: #005177;
+}
+
+.abs-action-btn.edit {
+    color: #2271b1;
+}
+
+.abs-action-btn.edit:hover {
+    color: #135e96;
+}
+
+.abs-action-btn.delete {
+    color: #d63638;
+}
+
+.abs-action-btn.delete:hover {
+    color: #b32d2e;
+}
+
+/* ======================================
+   Settings Page
+   ====================================== */
+
+.abs-settings-form {
+    max-width: 800px;
+}
+
+.abs-settings-section {
+    background-color: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    margin-bottom: 20px;
+}
+
+.abs-settings-section h2 {
+    margin: 0;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-bottom: 1px solid #ccd0d4;
+    background-color: #f9f9f9;
+}
+
+.abs-settings-section .abs-section-content {
+    padding: 20px;
+}
+
+.abs-setting-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.abs-setting-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.abs-setting-label {
+    flex: 0 0 200px;
+    padding-right: 20px;
+}
+
+.abs-setting-label label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1d2327;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.abs-setting-label .description {
+    font-size: 13px;
+    color: #646970;
+    font-weight: 400;
+}
+
+.abs-setting-input {
+    flex: 1;
+}
+
+.abs-setting-input input[type="text"],
+.abs-setting-input input[type="email"],
+.abs-setting-input input[type="number"],
+.abs-setting-input select,
+.abs-setting-input textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 8px 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 3px;
+    font-size: 14px;
+    box-shadow: 0 0 0 transparent;
+    transition: box-shadow 0.1s linear;
+}
+
+.abs-setting-input input:focus,
+.abs-setting-input select:focus,
+.abs-setting-input textarea:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    outline: 2px solid transparent;
+}
+
+.abs-setting-input textarea {
+    min-height: 150px;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 13px;
+}
+
+.abs-setting-input .abs-help-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #646970;
+}
+
+/* ======================================
+   Email Template Editor
+   ====================================== */
+
+.abs-email-template-vars {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f0f6fc;
+    border: 1px solid #c3dafe;
+    border-radius: 3px;
+}
+
+.abs-email-template-vars h4 {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0c5460;
+}
+
+.abs-email-template-vars ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+    list-style: disc;
+}
+
+.abs-email-template-vars li {
+    font-size: 12px;
+    color: #0c5460;
+    margin-bottom: 5px;
+    font-family: Consolas, Monaco, monospace;
+}
+
+/* ======================================
+   Day Selection Checkboxes
+   ====================================== */
+
+.abs-days-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.abs-day-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.abs-day-checkbox input[type="checkbox"] {
+    margin: 0 8px 0 0;
+}
+
+.abs-day-checkbox label {
+    margin: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* ======================================
+   Room Management
+   ====================================== */
+
+.abs-rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.abs-room-card {
+    background-color: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.abs-room-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.abs-room-card .abs-room-meta {
+    font-size: 13px;
+    color: #646970;
+    margin-bottom: 15px;
+}
+
+.abs-room-card .abs-room-meta p {
+    margin: 5px 0;
+}
+
+.abs-room-card .abs-room-actions {
+    display: flex;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* ======================================
+   Modal/Dialog Styles
+   ====================================== */
+
+.abs-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+}
+
+.abs-modal {
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.abs-modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.abs-modal-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.abs-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #646970;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.abs-modal-close:hover {
+    color: #1d2327;
+}
+
+.abs-modal-body {
+    padding: 20px;
+}
+
+.abs-modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* ======================================
+   Statistics Dashboard
+   ====================================== */
+
+.abs-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.abs-stat-card {
+    background-color: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 3px;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.abs-stat-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #646970;
+    text-transform: uppercase;
+}
+
+.abs-stat-card .abs-stat-value {
+    font-size: 32px;
+    font-weight: 600;
+    color: #1d2327;
+    line-height: 1;
+}
+
+.abs-stat-card .abs-stat-change {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #646970;
+}
+
+/* ======================================
+   Notices
+   ====================================== */
+
+.abs-notice {
+    margin: 15px 0;
+    padding: 12px 15px;
+    border-left: 4px solid;
+    background-color: #fff;
+}
+
+.abs-notice.success {
+    border-left-color: #46b450;
+}
+
+.abs-notice.error {
+    border-left-color: #dc3232;
+}
+
+.abs-notice.warning {
+    border-left-color: #ffb900;
+}
+
+.abs-notice.info {
+    border-left-color: #00a0d2;
+}
+
+/* ======================================
+   Responsive Admin
+   ====================================== */
+
+@media screen and (max-width: 768px) {
+    .abs-admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .abs-setting-row {
+        flex-direction: column;
+    }
+
+    .abs-setting-label {
+        flex: 1;
+        padding-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .abs-bookings-table {
+        font-size: 12px;
+    }
+
+    .abs-bookings-table th,
+    .abs-bookings-table td {
+        padding: 8px 10px;
+    }
+
+    .abs-rooms-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .abs-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
