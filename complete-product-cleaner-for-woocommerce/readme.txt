@@ -4,7 +4,7 @@ Tags: woocommerce, cleanup, products, images, delete
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 8.0
-Stable tag: 1.0.5
+Stable Tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,8 @@ Bulk delete all WooCommerce products and images with safety features.
 == Description ==
 
 WooCommerce Complete Product Cleaner is a powerful yet safe tool for store administrators who need to delete all WooCommerce products and related images. Perfect for resetting development sites, clearing demo data, or seasonal inventory changes.
+
+Expanded Product Cleaner now successfully expanded the plugin to support cleaning Orders, Customers, Taxonomies, Coupons, and WP Content (Posts/Pages), alongside Products. We also implemented Action Scheduler for reliable background processing.
 
 **Features:**
 
@@ -23,6 +25,15 @@ WooCommerce Complete Product Cleaner is a powerful yet safe tool for store admin
 *   **Database Cleanup:** Removes orphaned metadata and term relationships
 *   **Admin Only:** Restricted to users with manage_options capability
 *   **Responsive Interface:** Clean, tabbed interface that works on all devices
+*   **Products:** Deletes products, variations, and optionally attached images.
+*   **Orders:** Deletes Shop Orders and Refunds.    
+*   **Customers:** Deletes users with the customer role.
+*   **Taxonomies:** Deletes Categories, Tags, and Terms.
+*   **Coupons:** Deletes WooCommerce coupons.
+*   **WP Content:** Deletes standard Posts and Pages.
+*   **Orphaned Images:** Scans and deletes unused images.
+*   **Background Processing:** Deletions happen in batches (default 20 items per batch) to prevent timeouts.
+*   **Stop/Pause:** You can reload the page to stop the polling (job cancellation logic is basic for now).
 
 == Installation ==
 
