@@ -4,12 +4,12 @@
  * Plugin Name: Complete Product Cleaner for WooCommerce
  * Plugin URI: https://wordpress.org/plugins/complete-product-cleaner-for-woocommerce
  * Description: Delete all WooCommerce products with options to remove related images and orphaned attachments
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Dhiraj Patra
  * Author URI: https://github.com/DhirajPatra
  * License: GPL v2 or later
- * Text Domain: complete-product-cleaner-for-woocommerce  
- * Requires Plugins: woocommerce  
+ * Text Domain: complete-product-cleaner-for-woocommerce
+ * Requires Plugins: woocommerce
  */
 
 // Prevent direct access

@@ -7,7 +7,6 @@
  * Version: 1.0.1
  * Requires at least: 6.9
  * Requires PHP: 8.0
- * Requires Plugins: woocommerce
  * Author: Dhiraj Patra
  * Author URI: https://github.com/dhirajpatra
  * License: GPL v2 or later

@@ -1,13 +1,10 @@
 === Complete Product Cleaner for WooCommerce ===
 Contributors: dhirajpatra
-Username: dhirajpatra
-Display Name: Dhiraj Patra
 Tags: woocommerce, cleanup, products, images, delete
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 6.7
 Requires PHP: 8.0
-Stable tag: 1.0.4
-Requires Plugins: woocommerce
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,4 +71,8 @@ Yes, but performance depends on server resources. For very large stores (10,000+
 
 == Upgrade Notice ==
 
-This is the initial release. Always test on a staging site before using on production.
+= 1.0.5 =
+*   Initial release with complete product and image cleanup
+*   Tabbed interface for better organization
+*   Smart orphaned image detection
+*   Enhanced safety features
