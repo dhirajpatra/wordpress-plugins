@@ -30,7 +30,7 @@ class ABS_Booking {
         if ( ! $validation['valid'] ) {
             return array(
                 'success' => false,
-                'message' => __( 'Please correct the errors in your form.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Please correct the errors in your form.', 'advanced-hotel-room-booking-system' ),
                 'errors' => $validation['errors'],
             );
         }
@@ -59,7 +59,7 @@ class ABS_Booking {
         if ( ! $booking_id ) {
             return array(
                 'success' => false,
-                'message' => __( 'Failed to create booking. Please try again.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Failed to create booking. Please try again.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -71,7 +71,7 @@ class ABS_Booking {
         
         return array(
             'success' => true,
-            'message' => __( 'Your booking request has been submitted successfully. You will receive an email once it is confirmed.', 'advanced-hotel-room-booking' ),
+            'message' => __( 'Your booking request has been submitted successfully. You will receive an email once it is confirmed.', 'advanced-hotel-room-booking-system' ),
             'booking_id' => $booking_id,
         );
     }
@@ -88,7 +88,7 @@ class ABS_Booking {
         if ( ! $booking ) {
             return array(
                 'success' => false,
-                'message' => __( 'Booking not found.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Booking not found.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -101,7 +101,7 @@ class ABS_Booking {
         if ( ! $updated ) {
             return array(
                 'success' => false,
-                'message' => __( 'Failed to confirm booking.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Failed to confirm booking.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -113,7 +113,7 @@ class ABS_Booking {
         
         return array(
             'success' => true,
-            'message' => __( 'Booking confirmed successfully.', 'advanced-hotel-room-booking' ),
+            'message' => __( 'Booking confirmed successfully.', 'advanced-hotel-room-booking-system' ),
         );
     }
 
@@ -129,7 +129,7 @@ class ABS_Booking {
         if ( ! $booking ) {
             return array(
                 'success' => false,
-                'message' => __( 'Booking not found.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Booking not found.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -142,7 +142,7 @@ class ABS_Booking {
         if ( ! $updated ) {
             return array(
                 'success' => false,
-                'message' => __( 'Failed to deny booking.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Failed to deny booking.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -154,7 +154,7 @@ class ABS_Booking {
         
         return array(
             'success' => true,
-            'message' => __( 'Booking denied successfully.', 'advanced-hotel-room-booking' ),
+            'message' => __( 'Booking denied successfully.', 'advanced-hotel-room-booking-system' ),
         );
     }
 
@@ -171,7 +171,7 @@ class ABS_Booking {
         if ( ! $booking ) {
             return array(
                 'success' => false,
-                'message' => __( 'Booking not found.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Booking not found.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -179,7 +179,7 @@ class ABS_Booking {
         if ( $user_id && intval( $booking->user_id ) !== intval( $user_id ) ) {
             return array(
                 'success' => false,
-                'message' => __( 'You do not have permission to cancel this booking.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'You do not have permission to cancel this booking.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -192,7 +192,7 @@ class ABS_Booking {
         if ( ! $updated ) {
             return array(
                 'success' => false,
-                'message' => __( 'Failed to cancel booking.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Failed to cancel booking.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -201,7 +201,7 @@ class ABS_Booking {
         
         return array(
             'success' => true,
-            'message' => __( 'Booking cancelled successfully.', 'advanced-hotel-room-booking' ),
+            'message' => __( 'Booking cancelled successfully.', 'advanced-hotel-room-booking-system' ),
         );
     }
 
@@ -217,7 +217,7 @@ class ABS_Booking {
         if ( ! $booking ) {
             return array(
                 'success' => false,
-                'message' => __( 'Booking not found.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Booking not found.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -226,7 +226,7 @@ class ABS_Booking {
         if ( ! $deleted ) {
             return array(
                 'success' => false,
-                'message' => __( 'Failed to delete booking.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Failed to delete booking.', 'advanced-hotel-room-booking-system' ),
             );
         }
         
@@ -235,7 +235,7 @@ class ABS_Booking {
         
         return array(
             'success' => true,
-            'message' => __( 'Booking deleted successfully.', 'advanced-hotel-room-booking' ),
+            'message' => __( 'Booking deleted successfully.', 'advanced-hotel-room-booking-system' ),
         );
     }
 }

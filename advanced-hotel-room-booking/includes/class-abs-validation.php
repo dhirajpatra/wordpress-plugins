@@ -26,45 +26,45 @@ class ABS_Validation {
 
         // Validate first name
         if ( empty( $data['first_name'] ) ) {
-            $errors['first_name'] = __( 'First name is required.', 'advanced-hotel-room-booking' );
+            $errors['first_name'] = __( 'First name is required.', 'advanced-hotel-room-booking-system' );
         } elseif ( strlen( $data['first_name'] ) > 100 ) {
-            $errors['first_name'] = __( 'First name must be less than 100 characters.', 'advanced-hotel-room-booking' );
+            $errors['first_name'] = __( 'First name must be less than 100 characters.', 'advanced-hotel-room-booking-system' );
         }
 
         // Validate last name
         if ( empty( $data['last_name'] ) ) {
-            $errors['last_name'] = __( 'Last name is required.', 'advanced-hotel-room-booking' );
+            $errors['last_name'] = __( 'Last name is required.', 'advanced-hotel-room-booking-system' );
         } elseif ( strlen( $data['last_name'] ) > 100 ) {
-            $errors['last_name'] = __( 'Last name must be less than 100 characters.', 'advanced-hotel-room-booking' );
+            $errors['last_name'] = __( 'Last name must be less than 100 characters.', 'advanced-hotel-room-booking-system' );
         }
 
         // Validate email
         if ( empty( $data['email'] ) ) {
-            $errors['email'] = __( 'Email address is required.', 'advanced-hotel-room-booking' );
+            $errors['email'] = __( 'Email address is required.', 'advanced-hotel-room-booking-system' );
         } elseif ( ! is_email( $data['email'] ) ) {
-            $errors['email'] = __( 'Please enter a valid email address.', 'advanced-hotel-room-booking' );
+            $errors['email'] = __( 'Please enter a valid email address.', 'advanced-hotel-room-booking-system' );
         }
 
         // Validate phone
         if ( empty( $data['phone'] ) ) {
-            $errors['phone'] = __( 'Phone number is required.', 'advanced-hotel-room-booking' );
+            $errors['phone'] = __( 'Phone number is required.', 'advanced-hotel-room-booking-system' );
         } elseif ( ! self::validate_phone( $data['phone'] ) ) {
-            $errors['phone'] = __( 'Please enter a valid phone number.', 'advanced-hotel-room-booking' );
+            $errors['phone'] = __( 'Please enter a valid phone number.', 'advanced-hotel-room-booking-system' );
         }
 
         // Validate room ID
         if ( empty( $data['room_id'] ) || ! is_numeric( $data['room_id'] ) ) {
-            $errors['room_id'] = __( 'Please select a valid room.', 'advanced-hotel-room-booking' );
+            $errors['room_id'] = __( 'Please select a valid room.', 'advanced-hotel-room-booking-system' );
         } else {
             $room = ABS_Database::get_room( intval( $data['room_id'] ) );
             if ( ! $room ) {
-                $errors['room_id'] = __( 'Selected room does not exist.', 'advanced-hotel-room-booking' );
+                $errors['room_id'] = __( 'Selected room does not exist.', 'advanced-hotel-room-booking-system' );
             }
         }
 
         // Validate booking date
         if ( empty( $data['booking_date'] ) ) {
-            $errors['booking_date'] = __( 'Booking date is required.', 'advanced-hotel-room-booking' );
+            $errors['booking_date'] = __( 'Booking date is required.', 'advanced-hotel-room-booking-system' );
         } else {
             $date_validation = self::validate_booking_date( $data['booking_date'] );
             if ( ! $date_validation['valid'] ) {
@@ -104,7 +104,7 @@ class ABS_Validation {
         if ( ! $date_obj || $date_obj->format( 'Y-m-d' ) !== $date ) {
             return array(
                 'valid' => false,
-                'message' => __( 'Invalid date format.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Invalid date format.', 'advanced-hotel-room-booking-system' ),
             );
         }
 
@@ -113,7 +113,7 @@ class ABS_Validation {
         if ( $date_obj < $today ) {
             return array(
                 'valid' => false,
-                'message' => __( 'Cannot book dates in the past.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Cannot book dates in the past.', 'advanced-hotel-room-booking-system' ),
             );
         }
 
@@ -123,20 +123,20 @@ class ABS_Validation {
         
         if ( in_array( $day_of_week, $closed_days ) ) {
             $day_names = array(
-                0 => __( 'Sunday', 'advanced-hotel-room-booking' ),
-                1 => __( 'Monday', 'advanced-hotel-room-booking' ),
-                2 => __( 'Tuesday', 'advanced-hotel-room-booking' ),
-                3 => __( 'Wednesday', 'advanced-hotel-room-booking' ),
-                4 => __( 'Thursday', 'advanced-hotel-room-booking' ),
-                5 => __( 'Friday', 'advanced-hotel-room-booking' ),
-                6 => __( 'Saturday', 'advanced-hotel-room-booking' ),
+                0 => __( 'Sunday', 'advanced-hotel-room-booking-system' ),
+                1 => __( 'Monday', 'advanced-hotel-room-booking-system' ),
+                2 => __( 'Tuesday', 'advanced-hotel-room-booking-system' ),
+                3 => __( 'Wednesday', 'advanced-hotel-room-booking-system' ),
+                4 => __( 'Thursday', 'advanced-hotel-room-booking-system' ),
+                5 => __( 'Friday', 'advanced-hotel-room-booking-system' ),
+                6 => __( 'Saturday', 'advanced-hotel-room-booking-system' ),
             );
             
             return array(
                 'valid' => false,
                 'message' => sprintf(
                     /* translators: %s: day name */
-                    __( 'Bookings are not available on %s.', 'advanced-hotel-room-booking' ),
+                    __( 'Bookings are not available on %s.', 'advanced-hotel-room-booking-system' ),
                     $day_names[ $day_of_week ]
                 ),
             );
@@ -160,7 +160,7 @@ class ABS_Validation {
         if ( ! is_user_logged_in() ) {
             return array(
                 'can_book' => false,
-                'message' => __( 'You must be logged in to make a booking.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'You must be logged in to make a booking.', 'advanced-hotel-room-booking-system' ),
             );
         }
 
@@ -169,7 +169,7 @@ class ABS_Validation {
         if ( ! $room ) {
             return array(
                 'can_book' => false,
-                'message' => __( 'Invalid room selected.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'Invalid room selected.', 'advanced-hotel-room-booking-system' ),
             );
         }
 
@@ -182,7 +182,7 @@ class ABS_Validation {
                 'can_book' => false,
                 'message' => sprintf(
                     /* translators: %d: maximum number of bookings */
-                    __( 'You have reached the maximum of %d active bookings for this room.', 'advanced-hotel-room-booking' ),
+                    __( 'You have reached the maximum of %d active bookings for this room.', 'advanced-hotel-room-booking-system' ),
                     $max_bookings
                 ),
             );
@@ -219,7 +219,7 @@ class ABS_Validation {
         if ( ! empty( $confirmed_bookings ) ) {
             return array(
                 'available' => false,
-                'message' => __( 'This room is already booked for the selected date.', 'advanced-hotel-room-booking' ),
+                'message' => __( 'This room is already booked for the selected date.', 'advanced-hotel-room-booking-system' ),
             );
         }
         

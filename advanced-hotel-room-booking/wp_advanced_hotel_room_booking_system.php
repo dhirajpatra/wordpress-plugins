@@ -6,10 +6,10 @@
  * Description: Complete booking management system with calendar, user authentication, and email notifications
  * Version: 1.0.0
  * Author: Dhiraj Patra
- * Author URI: https://dhirajpatra.com
+ * Author URI: https://github.com/dhirajpatra
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: advanced-hotel-room-booking
+ * Text Domain: advanced-hotel-room-booking-system
  * Domain Path: /languages
  *
  * @package AdvancedHotelRoomBookingSystem

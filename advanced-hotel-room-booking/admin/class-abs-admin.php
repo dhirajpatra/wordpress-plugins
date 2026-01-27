@@ -40,8 +40,8 @@ class ABS_Admin
     public function add_menu_pages()
     {
         add_menu_page(
-            __('Bookings', 'advanced-hotel-room-booking'),
-            __('Bookings', 'advanced-hotel-room-booking'),
+            __('Bookings', 'advanced-hotel-room-booking-system'),
+            __('Bookings', 'advanced-hotel-room-booking-system'),
             'manage_options',
             'abs-bookings',
             array($this, 'bookings_page'),
@@ -51,8 +51,8 @@ class ABS_Admin
 
         add_submenu_page(
             'abs-bookings',
-            __('All Bookings', 'advanced-hotel-room-booking'),
-            __('All Bookings', 'advanced-hotel-room-booking'),
+            __('All Bookings', 'advanced-hotel-room-booking-system'),
+            __('All Bookings', 'advanced-hotel-room-booking-system'),
             'manage_options',
             'abs-bookings',
             array($this, 'bookings_page')
@@ -60,8 +60,8 @@ class ABS_Admin
 
         add_submenu_page(
             'abs-bookings',
-            __('Rooms', 'advanced-hotel-room-booking'),
-            __('Rooms', 'advanced-hotel-room-booking'),
+            __('Rooms', 'advanced-hotel-room-booking-system'),
+            __('Rooms', 'advanced-hotel-room-booking-system'),
             'manage_options',
             'abs-rooms',
             array($this, 'rooms_page')
@@ -69,8 +69,8 @@ class ABS_Admin
 
         add_submenu_page(
             'abs-bookings',
-            __('Settings', 'advanced-hotel-room-booking'),
-            __('Settings', 'advanced-hotel-room-booking'),
+            __('Settings', 'advanced-hotel-room-booking-system'),
+            __('Settings', 'advanced-hotel-room-booking-system'),
             'manage_options',
             'abs-settings',
             array($this, 'settings_page')
@@ -109,15 +109,15 @@ class ABS_Admin
             array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'nonce' => wp_create_nonce('abs_admin_nonce'),
-                'confirmDelete' => __('Are you sure you want to delete this booking?', 'advanced-hotel-room-booking'),
-                'confirmDeny' => __('Are you sure you want to deny this booking?', 'advanced-hotel-room-booking'),
-                'confirmBulkAction' => __('Are you sure you want to perform this bulk action?', 'advanced-hotel-room-booking'),
-                'confirmBulkDelete' => __('Are you sure you want to delete the selected bookings?', 'advanced-hotel-room-booking'),
-                'confirmDeleteRoom' => __('Are you sure you want to delete this room?', 'advanced-hotel-room-booking'),
-                'noSelection' => __('Please select at least one booking.', 'advanced-hotel-room-booking'),
-                'errorMessage' => __('An error occurred. Please try again.', 'advanced-hotel-room-booking'),
-                'addRoom' => __('Add New Room', 'advanced-hotel-room-booking'),
-                'editRoom' => __('Edit Room', 'advanced-hotel-room-booking'),
+                'confirmDelete' => __('Are you sure you want to delete this booking?', 'advanced-hotel-room-booking-system'),
+                'confirmDeny' => __('Are you sure you want to deny this booking?', 'advanced-hotel-room-booking-system'),
+                'confirmBulkAction' => __('Are you sure you want to perform this bulk action?', 'advanced-hotel-room-booking-system'),
+                'confirmBulkDelete' => __('Are you sure you want to delete the selected bookings?', 'advanced-hotel-room-booking-system'),
+                'confirmDeleteRoom' => __('Are you sure you want to delete this room?', 'advanced-hotel-room-booking-system'),
+                'noSelection' => __('Please select at least one booking.', 'advanced-hotel-room-booking-system'),
+                'errorMessage' => __('An error occurred. Please try again.', 'advanced-hotel-room-booking-system'),
+                'addRoom' => __('Add New Room', 'advanced-hotel-room-booking-system'),
+                'editRoom' => __('Edit Room', 'advanced-hotel-room-booking-system'),
             )
         );
     }
@@ -213,7 +213,7 @@ class ABS_Admin
 
         if (! current_user_can('manage_options')) {
             wp_send_json_error(array(
-                'message' => __('Permission denied.', 'advanced-hotel-room-booking'),
+                'message' => __('Permission denied.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -236,7 +236,7 @@ class ABS_Admin
 
         if (! current_user_can('manage_options')) {
             wp_send_json_error(array(
-                'message' => __('Permission denied.', 'advanced-hotel-room-booking'),
+                'message' => __('Permission denied.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -259,7 +259,7 @@ class ABS_Admin
 
         if (! current_user_can('manage_options')) {
             wp_send_json_error(array(
-                'message' => __('Permission denied.', 'advanced-hotel-room-booking'),
+                'message' => __('Permission denied.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -282,7 +282,7 @@ class ABS_Admin
 
         if (! current_user_can('manage_options')) {
             wp_send_json_error(array(
-                'message' => __('Permission denied.', 'advanced-hotel-room-booking'),
+                'message' => __('Permission denied.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -291,7 +291,7 @@ class ABS_Admin
 
         if (empty($action) || empty($booking_ids)) {
             wp_send_json_error(array(
-                'message' => __('Invalid request.', 'advanced-hotel-room-booking'),
+                'message' => __('Invalid request.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -313,7 +313,7 @@ class ABS_Admin
         wp_send_json_success(array(
             'message' => sprintf(
                 /* translators: %d: number of bookings */
-                _n('%d booking updated successfully.', '%d bookings updated successfully.', $success_count, 'advanced-hotel-room-booking'),
+                _n('%d booking updated successfully.', '%d bookings updated successfully.', $success_count, 'advanced-hotel-room-booking-system'),
                 $success_count
             ),
         ));
@@ -328,7 +328,7 @@ class ABS_Admin
 
         if (! current_user_can('manage_options')) {
             wp_send_json_error(array(
-                'message' => __('Permission denied.', 'advanced-hotel-room-booking'),
+                'message' => __('Permission denied.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -339,7 +339,7 @@ class ABS_Admin
             wp_send_json_success(array('room' => $room));
         } else {
             wp_send_json_error(array(
-                'message' => __('Room not found.', 'advanced-hotel-room-booking'),
+                'message' => __('Room not found.', 'advanced-hotel-room-booking-system'),
             ));
         }
     }
@@ -353,7 +353,7 @@ class ABS_Admin
 
         if (! current_user_can('manage_options')) {
             wp_send_json_error(array(
-                'message' => __('Permission denied.', 'advanced-hotel-room-booking'),
+                'message' => __('Permission denied.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -369,17 +369,17 @@ class ABS_Admin
 
         if ($room_id) {
             $result = ABS_Room::update($room_id, $data);
-            $message = __('Room updated successfully.', 'advanced-hotel-room-booking');
+            $message = __('Room updated successfully.', 'advanced-hotel-room-booking-system');
         } else {
             $result = ABS_Room::create($data);
-            $message = __('Room created successfully.', 'advanced-hotel-room-booking');
+            $message = __('Room created successfully.', 'advanced-hotel-room-booking-system');
         }
 
         if ($result) {
             wp_send_json_success(array('message' => $message));
         } else {
             wp_send_json_error(array(
-                'message' => __('Failed to save room.', 'advanced-hotel-room-booking'),
+                'message' => __('Failed to save room.', 'advanced-hotel-room-booking-system'),
             ));
         }
     }
@@ -393,7 +393,7 @@ class ABS_Admin
 
         if (! current_user_can('manage_options')) {
             wp_send_json_error(array(
-                'message' => __('Permission denied.', 'advanced-hotel-room-booking'),
+                'message' => __('Permission denied.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -402,11 +402,11 @@ class ABS_Admin
 
         if ($result) {
             wp_send_json_success(array(
-                'message' => __('Room deleted successfully.', 'advanced-hotel-room-booking'),
+                'message' => __('Room deleted successfully.', 'advanced-hotel-room-booking-system'),
             ));
         } else {
             wp_send_json_error(array(
-                'message' => __('Failed to delete room. Room may have existing bookings.', 'advanced-hotel-room-booking'),
+                'message' => __('Failed to delete room. Room may have existing bookings.', 'advanced-hotel-room-booking-system'),
             ));
         }
     }

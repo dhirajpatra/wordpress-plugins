@@ -142,12 +142,12 @@ class ABS_Settings
             'closed_days' => array(), // No closed days by default
             'max_bookings_per_user' => 3,
             'admin_email' => get_option('admin_email'),
-            'booking_title_default' => __('Room', 'advanced-hotel-room-booking'),
-            'email_user_confirmation_subject' => __('Booking Confirmed - {site_name}', 'advanced-hotel-room-booking'),
+            'booking_title_default' => __('Room', 'advanced-hotel-room-booking-system'),
+            'email_user_confirmation_subject' => __('Booking Confirmed - {site_name}', 'advanced-hotel-room-booking-system'),
             'email_user_confirmation_body' => self::get_default_user_confirmation_template(),
-            'email_user_denial_subject' => __('Booking Request Declined - {site_name}', 'advanced-hotel-room-booking'),
+            'email_user_denial_subject' => __('Booking Request Declined - {site_name}', 'advanced-hotel-room-booking-system'),
             'email_user_denial_body' => self::get_default_user_denial_template(),
-            'email_admin_notification_subject' => __('New Booking Request - {site_name}', 'advanced-hotel-room-booking'),
+            'email_admin_notification_subject' => __('New Booking Request - {site_name}', 'advanced-hotel-room-booking-system'),
             'email_admin_notification_body' => self::get_default_admin_notification_template(),
         );
 

@@ -29,7 +29,7 @@ class ABS_Email {
 
         $room = ABS_Database::get_room( $booking->room_id );
         $subject = self::parse_template_tags(
-            ABS_Settings::get( 'email_user_confirmation_subject', __( 'Booking Confirmed', 'advanced-hotel-room-booking' ) ),
+            ABS_Settings::get( 'email_user_confirmation_subject', __( 'Booking Confirmed', 'advanced-hotel-room-booking-system' ) ),
             $booking,
             $room
         );
@@ -59,7 +59,7 @@ class ABS_Email {
 
         $room = ABS_Database::get_room( $booking->room_id );
         $subject = self::parse_template_tags(
-            ABS_Settings::get( 'email_user_denial_subject', __( 'Booking Request Declined', 'advanced-hotel-room-booking' ) ),
+            ABS_Settings::get( 'email_user_denial_subject', __( 'Booking Request Declined', 'advanced-hotel-room-booking-system' ) ),
             $booking,
             $room
         );
@@ -91,7 +91,7 @@ class ABS_Email {
         $admin_email = ABS_Settings::get( 'admin_email', get_option( 'admin_email' ) );
 
         $subject = self::parse_template_tags(
-            ABS_Settings::get( 'email_admin_notification_subject', __( 'New Booking Request', 'advanced-hotel-room-booking' ) ),
+            ABS_Settings::get( 'email_admin_notification_subject', __( 'New Booking Request', 'advanced-hotel-room-booking-system' ) ),
             $booking,
             $room
         );
@@ -124,7 +124,7 @@ class ABS_Email {
             '{room_name}' => esc_html( $room->name ),
             '{booking_title}' => esc_html( $room->booking_title ),
             '{booking_date}' => esc_html( date_i18n( get_option( 'date_format' ), strtotime( $booking->booking_date ) ) ),
-            '{booking_time}' => $booking->start_time ? esc_html( date_i18n( get_option( 'time_format' ), strtotime( $booking->start_time ) ) ) : __( 'All day', 'advanced-hotel-room-booking' ),
+            '{booking_time}' => $booking->start_time ? esc_html( date_i18n( get_option( 'time_format' ), strtotime( $booking->start_time ) ) ) : __( 'All day', 'advanced-hotel-room-booking-system' ),
             '{booking_id}' => absint( $booking->id ),
             '{notes}' => esc_html( $booking->notes ),
             '{status}' => esc_html( ucfirst( $booking->status ) ),
@@ -143,17 +143,17 @@ class ABS_Email {
      */
     private static function get_default_user_confirmation_template() {
         $template = '<html><body>';
-        $template .= '<p>' . __( 'Dear {first_name} {last_name},', 'advanced-hotel-room-booking' ) . '</p>';
-        $template .= '<p>' . __( 'Your booking has been confirmed!', 'advanced-hotel-room-booking' ) . '</p>';
-        $template .= '<p><strong>' . __( 'Booking Details:', 'advanced-hotel-room-booking' ) . '</strong></p>';
+        $template .= '<p>' . __( 'Dear {first_name} {last_name},', 'advanced-hotel-room-booking-system' ) . '</p>';
+        $template .= '<p>' . __( 'Your booking has been confirmed!', 'advanced-hotel-room-booking-system' ) . '</p>';
+        $template .= '<p><strong>' . __( 'Booking Details:', 'advanced-hotel-room-booking-system' ) . '</strong></p>';
         $template .= '<ul>';
-        $template .= '<li>' . __( 'Booking ID:', 'advanced-hotel-room-booking' ) . ' {booking_id}</li>';
-        $template .= '<li>' . __( 'Room:', 'advanced-hotel-room-booking' ) . ' {room_name}</li>';
-        $template .= '<li>' . __( 'Date:', 'advanced-hotel-room-booking' ) . ' {booking_date}</li>';
-        $template .= '<li>' . __( 'Time:', 'advanced-hotel-room-booking' ) . ' {booking_time}</li>';
+        $template .= '<li>' . __( 'Booking ID:', 'advanced-hotel-room-booking-system' ) . ' {booking_id}</li>';
+        $template .= '<li>' . __( 'Room:', 'advanced-hotel-room-booking-system' ) . ' {room_name}</li>';
+        $template .= '<li>' . __( 'Date:', 'advanced-hotel-room-booking-system' ) . ' {booking_date}</li>';
+        $template .= '<li>' . __( 'Time:', 'advanced-hotel-room-booking-system' ) . ' {booking_time}</li>';
         $template .= '</ul>';
-        $template .= '<p>' . __( 'Thank you for your booking!', 'advanced-hotel-room-booking' ) . '</p>';
-        $template .= '<p>' . __( 'Best regards,', 'advanced-hotel-room-booking' ) . '<br>{site_name}</p>';
+        $template .= '<p>' . __( 'Thank you for your booking!', 'advanced-hotel-room-booking-system' ) . '</p>';
+        $template .= '<p>' . __( 'Best regards,', 'advanced-hotel-room-booking-system' ) . '<br>{site_name}</p>';
         $template .= '</body></html>';
         
         return $template;
@@ -166,16 +166,16 @@ class ABS_Email {
      */
     private static function get_default_user_denial_template() {
         $template = '<html><body>';
-        $template .= '<p>' . __( 'Dear {first_name} {last_name},', 'advanced-hotel-room-booking' ) . '</p>';
-        $template .= '<p>' . __( 'We regret to inform you that your booking request has been declined.', 'advanced-hotel-room-booking' ) . '</p>';
-        $template .= '<p><strong>' . __( 'Booking Details:', 'advanced-hotel-room-booking' ) . '</strong></p>';
+        $template .= '<p>' . __( 'Dear {first_name} {last_name},', 'advanced-hotel-room-booking-system' ) . '</p>';
+        $template .= '<p>' . __( 'We regret to inform you that your booking request has been declined.', 'advanced-hotel-room-booking-system' ) . '</p>';
+        $template .= '<p><strong>' . __( 'Booking Details:', 'advanced-hotel-room-booking-system' ) . '</strong></p>';
         $template .= '<ul>';
-        $template .= '<li>' . __( 'Booking ID:', 'advanced-hotel-room-booking' ) . ' {booking_id}</li>';
-        $template .= '<li>' . __( 'Room:', 'advanced-hotel-room-booking' ) . ' {room_name}</li>';
-        $template .= '<li>' . __( 'Date:', 'advanced-hotel-room-booking' ) . ' {booking_date}</li>';
+        $template .= '<li>' . __( 'Booking ID:', 'advanced-hotel-room-booking-system' ) . ' {booking_id}</li>';
+        $template .= '<li>' . __( 'Room:', 'advanced-hotel-room-booking-system' ) . ' {room_name}</li>';
+        $template .= '<li>' . __( 'Date:', 'advanced-hotel-room-booking-system' ) . ' {booking_date}</li>';
         $template .= '</ul>';
-        $template .= '<p>' . __( 'Please contact us if you have any questions.', 'advanced-hotel-room-booking' ) . '</p>';
-        $template .= '<p>' . __( 'Best regards,', 'advanced-hotel-room-booking' ) . '<br>{site_name}</p>';
+        $template .= '<p>' . __( 'Please contact us if you have any questions.', 'advanced-hotel-room-booking-system' ) . '</p>';
+        $template .= '<p>' . __( 'Best regards,', 'advanced-hotel-room-booking-system' ) . '<br>{site_name}</p>';
         $template .= '</body></html>';
         
         return $template;
@@ -188,19 +188,19 @@ class ABS_Email {
      */
     private static function get_default_admin_notification_template() {
         $template = '<html><body>';
-        $template .= '<p>' . __( 'A new booking request has been received.', 'advanced-hotel-room-booking' ) . '</p>';
-        $template .= '<p><strong>' . __( 'Booking Details:', 'advanced-hotel-room-booking' ) . '</strong></p>';
+        $template .= '<p>' . __( 'A new booking request has been received.', 'advanced-hotel-room-booking-system' ) . '</p>';
+        $template .= '<p><strong>' . __( 'Booking Details:', 'advanced-hotel-room-booking-system' ) . '</strong></p>';
         $template .= '<ul>';
-        $template .= '<li>' . __( 'Booking ID:', 'advanced-hotel-room-booking' ) . ' {booking_id}</li>';
-        $template .= '<li>' . __( 'Customer:', 'advanced-hotel-room-booking' ) . ' {first_name} {last_name}</li>';
-        $template .= '<li>' . __( 'Email:', 'advanced-hotel-room-booking' ) . ' {email}</li>';
-        $template .= '<li>' . __( 'Phone:', 'advanced-hotel-room-booking' ) . ' {phone}</li>';
-        $template .= '<li>' . __( 'Room:', 'advanced-hotel-room-booking' ) . ' {room_name}</li>';
-        $template .= '<li>' . __( 'Date:', 'advanced-hotel-room-booking' ) . ' {booking_date}</li>';
-        $template .= '<li>' . __( 'Time:', 'advanced-hotel-room-booking' ) . ' {booking_time}</li>';
-        $template .= '<li>' . __( 'Status:', 'advanced-hotel-room-booking' ) . ' {status}</li>';
+        $template .= '<li>' . __( 'Booking ID:', 'advanced-hotel-room-booking-system' ) . ' {booking_id}</li>';
+        $template .= '<li>' . __( 'Customer:', 'advanced-hotel-room-booking-system' ) . ' {first_name} {last_name}</li>';
+        $template .= '<li>' . __( 'Email:', 'advanced-hotel-room-booking-system' ) . ' {email}</li>';
+        $template .= '<li>' . __( 'Phone:', 'advanced-hotel-room-booking-system' ) . ' {phone}</li>';
+        $template .= '<li>' . __( 'Room:', 'advanced-hotel-room-booking-system' ) . ' {room_name}</li>';
+        $template .= '<li>' . __( 'Date:', 'advanced-hotel-room-booking-system' ) . ' {booking_date}</li>';
+        $template .= '<li>' . __( 'Time:', 'advanced-hotel-room-booking-system' ) . ' {booking_time}</li>';
+        $template .= '<li>' . __( 'Status:', 'advanced-hotel-room-booking-system' ) . ' {status}</li>';
         $template .= '</ul>';
-        $template .= '<p><a href="{manage_url}">' . __( 'Manage this booking', 'advanced-hotel-room-booking' ) . '</a></p>';
+        $template .= '<p><a href="{manage_url}">' . __( 'Manage this booking', 'advanced-hotel-room-booking-system' ) . '</a></p>';
         $template .= '</body></html>';
         
         return $template;

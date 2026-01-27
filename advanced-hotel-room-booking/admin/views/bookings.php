@@ -45,13 +45,13 @@ $cancelled_bookings = $stats->cancelled;
 
 <div class="wrap abs-admin-wrap">
     <div class="abs-admin-header">
-        <h1><?php esc_html_e('Bookings Management', 'advanced-hotel-room-booking'); ?></h1>
+        <h1><?php esc_html_e('Bookings Management', 'advanced-hotel-room-booking-system'); ?></h1>
         <div class="abs-admin-actions">
             <a href="<?php echo esc_url(admin_url('admin.php?page=abs-rooms')); ?>" class="button">
-                <?php esc_html_e('Manage Rooms', 'advanced-hotel-room-booking'); ?>
+                <?php esc_html_e('Manage Rooms', 'advanced-hotel-room-booking-system'); ?>
             </a>
             <a href="<?php echo esc_url(admin_url('admin.php?page=abs-settings')); ?>" class="button">
-                <?php esc_html_e('Settings', 'advanced-hotel-room-booking'); ?>
+                <?php esc_html_e('Settings', 'advanced-hotel-room-booking-system'); ?>
             </a>
         </div>
     </div>
@@ -60,52 +60,52 @@ $cancelled_bookings = $stats->cancelled;
     // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Filter parameters do not require nonce verification
     if (isset($_GET['settings-updated'])) : ?>
         <div class="notice notice-success is-dismissible">
-            <p><?php esc_html_e('Settings saved successfully.', 'advanced-hotel-room-booking'); ?></p>
+            <p><?php esc_html_e('Settings saved successfully.', 'advanced-hotel-room-booking-system'); ?></p>
         </div>
     <?php endif; ?>
 
     <!-- Statistics -->
     <div class="abs-stats-grid">
         <div class="abs-stat-card">
-            <h3><?php esc_html_e('Total Bookings', 'advanced-hotel-room-booking'); ?></h3>
+            <h3><?php esc_html_e('Total Bookings', 'advanced-hotel-room-booking-system'); ?></h3>
             <div class="abs-stat-value"><?php echo esc_html($total_bookings); ?></div>
         </div>
         <div class="abs-stat-card">
-            <h3><?php esc_html_e('Pending', 'advanced-hotel-room-booking'); ?></h3>
+            <h3><?php esc_html_e('Pending', 'advanced-hotel-room-booking-system'); ?></h3>
             <div class="abs-stat-value" style="color: #856404;"><?php echo esc_html($pending_bookings); ?></div>
         </div>
         <div class="abs-stat-card">
-            <h3><?php esc_html_e('Confirmed', 'advanced-hotel-room-booking'); ?></h3>
+            <h3><?php esc_html_e('Confirmed', 'advanced-hotel-room-booking-system'); ?></h3>
             <div class="abs-stat-value" style="color: #155724;"><?php echo esc_html($confirmed_bookings); ?></div>
         </div>
         <div class="abs-stat-card">
-            <h3><?php esc_html_e('Cancelled', 'advanced-hotel-room-booking'); ?></h3>
+            <h3><?php esc_html_e('Cancelled', 'advanced-hotel-room-booking-system'); ?></h3>
             <div class="abs-stat-value" style="color: #721c24;"><?php echo esc_html($cancelled_bookings); ?></div>
         </div>
     </div>
 
     <!-- Filters -->
     <div class="abs-settings-section">
-        <h2><?php esc_html_e('Filter Bookings', 'advanced-hotel-room-booking'); ?></h2>
+        <h2><?php esc_html_e('Filter Bookings', 'advanced-hotel-room-booking-system'); ?></h2>
         <div class="abs-section-content">
             <form method="get" action="">
                 <input type="hidden" name="page" value="abs-bookings">
 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 15px;">
                     <div>
-                        <label><?php esc_html_e('Status', 'advanced-hotel-room-booking'); ?></label>
+                        <label><?php esc_html_e('Status', 'advanced-hotel-room-booking-system'); ?></label>
                         <select name="status" id="abs-status-filter">
-                            <option value=""><?php esc_html_e('All Statuses', 'advanced-hotel-room-booking'); ?></option>
-                            <option value="pending" <?php selected($status_filter, 'pending'); ?>><?php esc_html_e('Pending', 'advanced-hotel-room-booking'); ?></option>
-                            <option value="confirmed" <?php selected($status_filter, 'confirmed'); ?>><?php esc_html_e('Confirmed', 'advanced-hotel-room-booking'); ?></option>
-                            <option value="cancelled" <?php selected($status_filter, 'cancelled'); ?>><?php esc_html_e('Cancelled', 'advanced-hotel-room-booking'); ?></option>
+                            <option value=""><?php esc_html_e('All Statuses', 'advanced-hotel-room-booking-system'); ?></option>
+                            <option value="pending" <?php selected($status_filter, 'pending'); ?>><?php esc_html_e('Pending', 'advanced-hotel-room-booking-system'); ?></option>
+                            <option value="confirmed" <?php selected($status_filter, 'confirmed'); ?>><?php esc_html_e('Confirmed', 'advanced-hotel-room-booking-system'); ?></option>
+                            <option value="cancelled" <?php selected($status_filter, 'cancelled'); ?>><?php esc_html_e('Cancelled', 'advanced-hotel-room-booking-system'); ?></option>
                         </select>
                     </div>
 
                     <div>
-                        <label><?php esc_html_e('Room', 'advanced-hotel-room-booking'); ?></label>
+                        <label><?php esc_html_e('Room', 'advanced-hotel-room-booking-system'); ?></label>
                         <select name="room_id" id="abs-room-filter">
-                            <option value=""><?php esc_html_e('All Rooms', 'advanced-hotel-room-booking'); ?></option>
+                            <option value=""><?php esc_html_e('All Rooms', 'advanced-hotel-room-booking-system'); ?></option>
                             <?php foreach ($rooms as $room) : ?>
                                 <option value="<?php echo esc_attr($room->id); ?>" <?php selected($room_filter, $room->id); ?>>
                                     <?php echo esc_html($room->name); ?>
@@ -115,21 +115,21 @@ $cancelled_bookings = $stats->cancelled;
                     </div>
 
                     <div>
-                        <label><?php esc_html_e('Date From', 'advanced-hotel-room-booking'); ?></label>
+                        <label><?php esc_html_e('Date From', 'advanced-hotel-room-booking-system'); ?></label>
                         <input type="date" name="date_from" id="abs-date-from" value="<?php echo esc_attr($date_from); ?>">
                     </div>
 
                     <div>
-                        <label><?php esc_html_e('Date To', 'advanced-hotel-room-booking'); ?></label>
+                        <label><?php esc_html_e('Date To', 'advanced-hotel-room-booking-system'); ?></label>
                         <input type="date" name="date_to" id="abs-date-to" value="<?php echo esc_attr($date_to); ?>">
                     </div>
                 </div>
 
                 <button type="submit" class="button button-primary" id="abs-apply-date-filter">
-                    <?php esc_html_e('Apply Filters', 'advanced-hotel-room-booking'); ?>
+                    <?php esc_html_e('Apply Filters', 'advanced-hotel-room-booking-system'); ?>
                 </button>
                 <a href="<?php echo esc_url(admin_url('admin.php?page=abs-bookings')); ?>" class="button">
-                    <?php esc_html_e('Clear Filters', 'advanced-hotel-room-booking'); ?>
+                    <?php esc_html_e('Clear Filters', 'advanced-hotel-room-booking-system'); ?>
                 </a>
             </form>
         </div>
@@ -137,18 +137,18 @@ $cancelled_bookings = $stats->cancelled;
 
     <!-- Bookings Table -->
     <div class="abs-settings-section">
-        <h2><?php esc_html_e('All Bookings', 'advanced-hotel-room-booking'); ?></h2>
+        <h2><?php esc_html_e('All Bookings', 'advanced-hotel-room-booking-system'); ?></h2>
         <div class="abs-section-content">
             <?php if (empty($bookings)) : ?>
-                <p><?php esc_html_e('No bookings found.', 'advanced-hotel-room-booking'); ?></p>
+                <p><?php esc_html_e('No bookings found.', 'advanced-hotel-room-booking-system'); ?></p>
             <?php else : ?>
                 <!-- Bulk Actions -->
                 <div style="margin-bottom: 15px;">
                     <select id="abs-bulk-action">
-                        <option value=""><?php esc_html_e('Bulk Actions', 'advanced-hotel-room-booking'); ?></option>
-                        <option value="confirm"><?php esc_html_e('Confirm', 'advanced-hotel-room-booking'); ?></option>
-                        <option value="deny"><?php esc_html_e('Deny', 'advanced-hotel-room-booking'); ?></option>
-                        <option value="delete"><?php esc_html_e('Delete', 'advanced-hotel-room-booking'); ?></option>
+                        <option value=""><?php esc_html_e('Bulk Actions', 'advanced-hotel-room-booking-system'); ?></option>
+                        <option value="confirm"><?php esc_html_e('Confirm', 'advanced-hotel-room-booking-system'); ?></option>
+                        <option value="deny"><?php esc_html_e('Deny', 'advanced-hotel-room-booking-system'); ?></option>
+                        <option value="delete"><?php esc_html_e('Delete', 'advanced-hotel-room-booking-system'); ?></option>
                     </select>
                 </div>
 
@@ -158,14 +158,14 @@ $cancelled_bookings = $stats->cancelled;
                             <th style="width: 40px;">
                                 <input type="checkbox" id="abs-select-all">
                             </th>
-                            <th><?php esc_html_e('ID', 'advanced-hotel-room-booking'); ?></th>
-                            <th><?php esc_html_e('Customer', 'advanced-hotel-room-booking'); ?></th>
-                            <th><?php esc_html_e('Contact', 'advanced-hotel-room-booking'); ?></th>
-                            <th><?php esc_html_e('Room', 'advanced-hotel-room-booking'); ?></th>
-                            <th><?php esc_html_e('Date', 'advanced-hotel-room-booking'); ?></th>
-                            <th><?php esc_html_e('Status', 'advanced-hotel-room-booking'); ?></th>
-                            <th><?php esc_html_e('Created', 'advanced-hotel-room-booking'); ?></th>
-                            <th><?php esc_html_e('Actions', 'advanced-hotel-room-booking'); ?></th>
+                            <th><?php esc_html_e('ID', 'advanced-hotel-room-booking-system'); ?></th>
+                            <th><?php esc_html_e('Customer', 'advanced-hotel-room-booking-system'); ?></th>
+                            <th><?php esc_html_e('Contact', 'advanced-hotel-room-booking-system'); ?></th>
+                            <th><?php esc_html_e('Room', 'advanced-hotel-room-booking-system'); ?></th>
+                            <th><?php esc_html_e('Date', 'advanced-hotel-room-booking-system'); ?></th>
+                            <th><?php esc_html_e('Status', 'advanced-hotel-room-booking-system'); ?></th>
+                            <th><?php esc_html_e('Created', 'advanced-hotel-room-booking-system'); ?></th>
+                            <th><?php esc_html_e('Actions', 'advanced-hotel-room-booking-system'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -188,7 +188,7 @@ $cancelled_bookings = $stats->cancelled;
                                     <?php echo esc_html($booking->email); ?><br>
                                     <small><?php echo esc_html($booking->phone); ?></small>
                                 </td>
-                                <td><?php echo esc_html($room ? $room->name : __('Unknown', 'advanced-hotel-room-booking')); ?></td>
+                                <td><?php echo esc_html($room ? $room->name : __('Unknown', 'advanced-hotel-room-booking-system')); ?></td>
                                 <td><?php echo esc_html(date_i18n(get_option('date_format'), strtotime($booking->booking_date))); ?></td>
                                 <td>
                                     <span class="abs-status-badge <?php echo esc_attr($booking->status); ?>">
@@ -199,14 +199,14 @@ $cancelled_bookings = $stats->cancelled;
                                 <td>
                                     <div class="abs-actions">
                                         <?php if ('pending' === $booking->status) : ?>
-                                            <button class="abs-action-btn abs-confirm-booking" data-booking-id="<?php echo esc_attr($booking->id); ?>" title="<?php esc_attr_e('Confirm Booking', 'advanced-hotel-room-booking'); ?>">
+                                            <button class="abs-action-btn abs-confirm-booking" data-booking-id="<?php echo esc_attr($booking->id); ?>" title="<?php esc_attr_e('Confirm Booking', 'advanced-hotel-room-booking-system'); ?>">
                                                 ✓
                                             </button>
-                                            <button class="abs-action-btn abs-deny-booking" data-booking-id="<?php echo esc_attr($booking->id); ?>" title="<?php esc_attr_e('Deny Booking', 'advanced-hotel-room-booking'); ?>">
+                                            <button class="abs-action-btn abs-deny-booking" data-booking-id="<?php echo esc_attr($booking->id); ?>" title="<?php esc_attr_e('Deny Booking', 'advanced-hotel-room-booking-system'); ?>">
                                                 ✕
                                             </button>
                                         <?php endif; ?>
-                                        <button class="abs-action-btn delete abs-delete-booking" data-booking-id="<?php echo esc_attr($booking->id); ?>" title="<?php esc_attr_e('Delete Booking', 'advanced-hotel-room-booking'); ?>">
+                                        <button class="abs-action-btn delete abs-delete-booking" data-booking-id="<?php echo esc_attr($booking->id); ?>" title="<?php esc_attr_e('Delete Booking', 'advanced-hotel-room-booking-system'); ?>">
                                             🗑
                                         </button>
                                     </div>
@@ -215,7 +215,7 @@ $cancelled_bookings = $stats->cancelled;
                             <?php if (! empty($booking->notes)) : ?>
                                 <tr>
                                     <td colspan="9" style="background-color: #f9f9f9; padding: 10px;">
-                                        <strong><?php esc_html_e('Notes:', 'advanced-hotel-room-booking'); ?></strong>
+                                        <strong><?php esc_html_e('Notes:', 'advanced-hotel-room-booking-system'); ?></strong>
                                         <?php echo esc_html($booking->notes); ?>
                                     </td>
                                 </tr>

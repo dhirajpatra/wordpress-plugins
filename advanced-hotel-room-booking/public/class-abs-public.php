@@ -63,14 +63,14 @@ class ABS_Public
             array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'nonce' => wp_create_nonce('abs_public_nonce'),
-                'requiredField' => __('This field is required.', 'advanced-hotel-room-booking'),
-                'invalidEmail' => __('Please enter a valid email address.', 'advanced-hotel-room-booking'),
-                'invalidPhone' => __('Please enter a valid phone number.', 'advanced-hotel-room-booking'),
-                'validationError' => __('Please correct the errors in the form.', 'advanced-hotel-room-booking'),
-                'errorMessage' => __('An error occurred. Please try again.', 'advanced-hotel-room-booking'),
-                'submitting' => __('Submitting...', 'advanced-hotel-room-booking'),
-                'submitLabel' => __('Submit Booking', 'advanced-hotel-room-booking'),
-                'confirmCancel' => __('Are you sure you want to cancel this booking?', 'advanced-hotel-room-booking'),
+                'requiredField' => __('This field is required.', 'advanced-hotel-room-booking-system'),
+                'invalidEmail' => __('Please enter a valid email address.', 'advanced-hotel-room-booking-system'),
+                'invalidPhone' => __('Please enter a valid phone number.', 'advanced-hotel-room-booking-system'),
+                'validationError' => __('Please correct the errors in the form.', 'advanced-hotel-room-booking-system'),
+                'errorMessage' => __('An error occurred. Please try again.', 'advanced-hotel-room-booking-system'),
+                'submitting' => __('Submitting...', 'advanced-hotel-room-booking-system'),
+                'submitLabel' => __('Submit Booking', 'advanced-hotel-room-booking-system'),
+                'confirmCancel' => __('Are you sure you want to cancel this booking?', 'advanced-hotel-room-booking-system'),
             )
         );
     }
@@ -103,9 +103,9 @@ class ABS_Public
     {
         if (! is_user_logged_in()) {
             return '<div class="abs-message abs-message-warning">' .
-                esc_html__('You must be logged in to make a booking.', 'advanced-hotel-room-booking') .
+                esc_html__('You must be logged in to make a booking.', 'advanced-hotel-room-booking-system') .
                 ' <a href="' . esc_url(wp_login_url(get_permalink())) . '">' .
-                esc_html__('Login', 'advanced-hotel-room-booking') . '</a></div>';
+                esc_html__('Login', 'advanced-hotel-room-booking-system') . '</a></div>';
         }
 
         $current_user = wp_get_current_user();
@@ -114,9 +114,9 @@ class ABS_Public
     ?>
         <form class="abs-booking-form" method="post">
             <div class="abs-form-group">
-                <label for="abs_room_id"><?php esc_html_e('Select Room', 'advanced-hotel-room-booking'); ?> <span class="required">*</span></label>
+                <label for="abs_room_id"><?php esc_html_e('Select Room', 'advanced-hotel-room-booking-system'); ?> <span class="required">*</span></label>
                 <select name="room_id" id="abs_room_id" required>
-                    <option value=""><?php esc_html_e('Choose a room...', 'advanced-hotel-room-booking'); ?></option>
+                    <option value=""><?php esc_html_e('Choose a room...', 'advanced-hotel-room-booking-system'); ?></option>
                     <?php
                     $rooms = ABS_Room::get_all();
                     foreach ($rooms as $room) {
@@ -127,39 +127,39 @@ class ABS_Public
             </div>
 
             <div class="abs-form-group">
-                <label for="abs_booking_date"><?php esc_html_e('Booking Date', 'advanced-hotel-room-booking'); ?> <span class="required">*</span></label>
+                <label for="abs_booking_date"><?php esc_html_e('Booking Date', 'advanced-hotel-room-booking-system'); ?> <span class="required">*</span></label>
                 <input type="date" name="booking_date" id="abs_booking_date" required>
             </div>
 
             <div class="abs-form-group">
-                <label for="abs_first_name"><?php esc_html_e('First Name', 'advanced-hotel-room-booking'); ?> <span class="required">*</span></label>
+                <label for="abs_first_name"><?php esc_html_e('First Name', 'advanced-hotel-room-booking-system'); ?> <span class="required">*</span></label>
                 <input type="text" name="first_name" id="abs_first_name" value="<?php echo esc_attr($current_user->first_name); ?>" required>
             </div>
 
             <div class="abs-form-group">
-                <label for="abs_last_name"><?php esc_html_e('Last Name', 'advanced-hotel-room-booking'); ?> <span class="required">*</span></label>
+                <label for="abs_last_name"><?php esc_html_e('Last Name', 'advanced-hotel-room-booking-system'); ?> <span class="required">*</span></label>
                 <input type="text" name="last_name" id="abs_last_name" value="<?php echo esc_attr($current_user->last_name); ?>" required>
             </div>
 
             <div class="abs-form-group">
-                <label for="abs_email"><?php esc_html_e('Email Address', 'advanced-hotel-room-booking'); ?> <span class="required">*</span></label>
+                <label for="abs_email"><?php esc_html_e('Email Address', 'advanced-hotel-room-booking-system'); ?> <span class="required">*</span></label>
                 <input type="email" name="email" id="abs_email" value="<?php echo esc_attr($current_user->user_email); ?>" required>
             </div>
 
             <div class="abs-form-group">
-                <label for="abs_phone"><?php esc_html_e('Phone Number', 'advanced-hotel-room-booking'); ?> <span class="required">*</span></label>
+                <label for="abs_phone"><?php esc_html_e('Phone Number', 'advanced-hotel-room-booking-system'); ?> <span class="required">*</span></label>
                 <input type="tel" name="phone" id="abs_phone" required>
             </div>
 
             <div class="abs-form-group">
-                <label for="abs_notes"><?php esc_html_e('Notes (Optional)', 'advanced-hotel-room-booking'); ?></label>
+                <label for="abs_notes"><?php esc_html_e('Notes (Optional)', 'advanced-hotel-room-booking-system'); ?></label>
                 <textarea name="notes" id="abs_notes" rows="4"></textarea>
             </div>
 
             <input type="hidden" name="user_id" value="<?php echo esc_attr(get_current_user_id()); ?>">
 
             <div class="abs-form-actions">
-                <button type="submit" class="abs-btn abs-btn-primary"><?php esc_html_e('Submit Booking', 'advanced-hotel-room-booking'); ?></button>
+                <button type="submit" class="abs-btn abs-btn-primary"><?php esc_html_e('Submit Booking', 'advanced-hotel-room-booking-system'); ?></button>
             </div>
         </form>
     <?php
@@ -174,7 +174,7 @@ class ABS_Public
         $rooms = ABS_Room::get_all();
 
         if (empty($rooms)) {
-            return '<p>' . esc_html__('No rooms available at this time.', 'advanced-hotel-room-booking') . '</p>';
+            return '<p>' . esc_html__('No rooms available at this time.', 'advanced-hotel-room-booking-system') . '</p>';
         }
 
         ob_start();
@@ -200,16 +200,16 @@ class ABS_Public
     {
         if (! is_user_logged_in()) {
             return '<div class="abs-message abs-message-warning">' .
-                esc_html__('You must be logged in to view your bookings.', 'advanced-hotel-room-booking') .
+                esc_html__('You must be logged in to view your bookings.', 'advanced-hotel-room-booking-system') .
                 ' <a href="' . esc_url(wp_login_url(get_permalink())) . '">' .
-                esc_html__('Login', 'advanced-hotel-room-booking') . '</a></div>';
+                esc_html__('Login', 'advanced-hotel-room-booking-system') . '</a></div>';
         }
 
         $bookings = ABS_Database::get_user_bookings(get_current_user_id());
 
         if (empty($bookings)) {
             return '<div class="abs-message abs-message-info">' .
-                esc_html__('You have no bookings yet.', 'advanced-hotel-room-booking') . '</div>';
+                esc_html__('You have no bookings yet.', 'advanced-hotel-room-booking-system') . '</div>';
         }
 
         ob_start();
@@ -221,22 +221,22 @@ class ABS_Public
                 ?>
                     <li class="abs-booking-item status-<?php echo esc_attr($booking->status); ?>">
                         <div class="abs-booking-header">
-                            <h4><?php echo esc_html($room ? $room->name : __('Unknown Room', 'advanced-hotel-room-booking')); ?></h4>
+                            <h4><?php echo esc_html($room ? $room->name : __('Unknown Room', 'advanced-hotel-room-booking-system')); ?></h4>
                             <span class="abs-booking-status <?php echo esc_attr($booking->status); ?>">
                                 <?php echo esc_html(ucfirst($booking->status)); ?>
                             </span>
                         </div>
                         <div class="abs-booking-details">
-                            <p><strong><?php esc_html_e('Date:', 'advanced-hotel-room-booking'); ?></strong>
+                            <p><strong><?php esc_html_e('Date:', 'advanced-hotel-room-booking-system'); ?></strong>
                                 <?php echo esc_html(date_i18n(get_option('date_format'), strtotime($booking->booking_date))); ?>
                             </p>
-                            <p><strong><?php esc_html_e('Booking ID:', 'advanced-hotel-room-booking'); ?></strong>
+                            <p><strong><?php esc_html_e('Booking ID:', 'advanced-hotel-room-booking-system'); ?></strong>
                                 #<?php echo esc_html($booking->id); ?>
                             </p>
                             <?php if ('pending' === $booking->status) : ?>
                                 <p>
                                     <button class="abs-btn abs-btn-secondary abs-cancel-booking" data-booking-id="<?php echo esc_attr($booking->id); ?>">
-                                        <?php esc_html_e('Cancel Booking', 'advanced-hotel-room-booking'); ?>
+                                        <?php esc_html_e('Cancel Booking', 'advanced-hotel-room-booking-system'); ?>
                                     </button>
                                 </p>
                             <?php endif; ?>
@@ -256,7 +256,7 @@ class ABS_Public
     {
         $widget = new ABS_Login_Widget();
         $instance = shortcode_atts(array(
-            'title' => __('Login', 'advanced-hotel-room-booking'),
+            'title' => __('Login', 'advanced-hotel-room-booking-system'),
             'redirect' => home_url(),
             'dashboard_url' => home_url('/my-bookings/'),
         ), $atts);
@@ -293,20 +293,20 @@ class ABS_Public
         <div class="abs-calendar-header">
             <h3><?php echo esc_html($month_name); ?></h3>
             <div class="abs-calendar-nav">
-                <button class="abs-calendar-prev"><?php esc_html_e('Previous', 'advanced-hotel-room-booking'); ?></button>
-                <button class="abs-calendar-next"><?php esc_html_e('Next', 'advanced-hotel-room-booking'); ?></button>
+                <button class="abs-calendar-prev"><?php esc_html_e('Previous', 'advanced-hotel-room-booking-system'); ?></button>
+                <button class="abs-calendar-next"><?php esc_html_e('Next', 'advanced-hotel-room-booking-system'); ?></button>
             </div>
         </div>
         <table class="abs-calendar-table">
             <thead>
                 <tr>
-                    <th><?php esc_html_e('Sun', 'advanced-hotel-room-booking'); ?></th>
-                    <th><?php esc_html_e('Mon', 'advanced-hotel-room-booking'); ?></th>
-                    <th><?php esc_html_e('Tue', 'advanced-hotel-room-booking'); ?></th>
-                    <th><?php esc_html_e('Wed', 'advanced-hotel-room-booking'); ?></th>
-                    <th><?php esc_html_e('Thu', 'advanced-hotel-room-booking'); ?></th>
-                    <th><?php esc_html_e('Fri', 'advanced-hotel-room-booking'); ?></th>
-                    <th><?php esc_html_e('Sat', 'advanced-hotel-room-booking'); ?></th>
+                    <th><?php esc_html_e('Sun', 'advanced-hotel-room-booking-system'); ?></th>
+                    <th><?php esc_html_e('Mon', 'advanced-hotel-room-booking-system'); ?></th>
+                    <th><?php esc_html_e('Tue', 'advanced-hotel-room-booking-system'); ?></th>
+                    <th><?php esc_html_e('Wed', 'advanced-hotel-room-booking-system'); ?></th>
+                    <th><?php esc_html_e('Thu', 'advanced-hotel-room-booking-system'); ?></th>
+                    <th><?php esc_html_e('Fri', 'advanced-hotel-room-booking-system'); ?></th>
+                    <th><?php esc_html_e('Sat', 'advanced-hotel-room-booking-system'); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -397,7 +397,7 @@ class ABS_Public
 
         if (! is_user_logged_in()) {
             wp_send_json_error(array(
-                'message' => __('You must be logged in to make a booking.', 'advanced-hotel-room-booking'),
+                'message' => __('You must be logged in to make a booking.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
@@ -430,7 +430,7 @@ class ABS_Public
 
         if (! is_user_logged_in()) {
             wp_send_json_error(array(
-                'message' => __('You must be logged in.', 'advanced-hotel-room-booking'),
+                'message' => __('You must be logged in.', 'advanced-hotel-room-booking-system'),
             ));
         }
 
