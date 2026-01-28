@@ -68,8 +68,10 @@ cp ~/Desktop/php/neurorag-agent-chatbot/assets/*.* assets/
 # 4. Commit changes
 svn ci -m "Update to v1.0.6 - Bug fixes and improvements"
 
-# 5. Create new tag
+# 5. Create new tag by copy trunk to tag
 svn cp trunk tags/1.0.6
+
+# Commit new tags
 svn ci -m "Tagging version 1.0.6"
 
 
