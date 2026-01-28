@@ -4,7 +4,8 @@ Tags: api, rest, commerce, ucp, integration
 Requires at least: 6.9
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
+Requires Plugins: woocommerce
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +31,8 @@ UCP Adapter For WooCommerce is a powerful WordPress plugin that provides REST AP
 2. **PUT /wp-json/ucp/v1/update/{session_id}** - Update session data
 3. **POST /wp-json/ucp/v1/complete/{session_id}** - Complete a session
 4. **GET /wp-json/ucp/v1/status/{session_id}** - Check session status
+5. **GET /wp-json/ucp/v1/sessions** - List all sessions
+6. **GET /wp-json/ucp/v1/product/search** - Search for products
 
 = Use Cases =
 
@@ -122,6 +125,11 @@ For support questions, please use the WordPress.org support forums. For bugs and
 
 == Changelog ==
 
+= 1.0.2 =
+* Added product search REST API endpoint.
+* Added sessions list REST API endpoint.
+* Added 'requires plugins' header.
+
 = 1.0.0 =
 * Initial release
 * Session management system
@@ -197,6 +205,65 @@ X-UCP-API-Key: your-api-key
   "status": "completed",
   "metadata": {
     "order_id": 789
+  }
+}
+```
+
+= List Sessions =
+
+**Endpoint**: `GET /wp-json/ucp/v1/sessions`
+
+**Parameters**:
+* `page`: Page number (optional, default 1)
+* `limit`: Results per page (optional, default 10)
+
+**Response**:
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "session_id": "ucp_abc123...",
+      "status": "active",
+      "created_at": "2024-01-01 12:00:00",
+      "expires": 1234567890
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "limit": 10,
+    "total": 5
+  }
+}
+```
+
+= Product Search =
+
+**Endpoint**: `GET /wp-json/ucp/v1/product/search`
+
+**Parameters**:
+* `search`: Search query (required)
+* `page`: Page number (optional, default 1)
+* `limit`: Results per page (optional, default 10)
+
+**Response**:
+```json
+{
+  "success": true,
+  "data": [
+    {
+      "id": 123,
+      "name": "T-Shirt",
+      "price": "20.00",
+      "image": "https://example.com/image.jpg",
+      "permalink": "https://example.com/product/t-shirt"
+    }
+  ],
+  "meta": {
+    "page": 1,
+    "limit": 10,
+    "search": "shirt",
+    "count": 1
   }
 }
 ```

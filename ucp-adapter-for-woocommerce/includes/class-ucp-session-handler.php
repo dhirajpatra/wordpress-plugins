@@ -304,6 +304,38 @@ class UCP_Adapter_Session_Handler
 	}
 
 	/**
+	 * Get sessions with pagination
+	 *
+	 * @param int $page Page number.
+	 * @param int $limit Number of items per page.
+	 * @return array List of sessions and total count.
+	 */
+	public function get_sessions($page = 1, $limit = 10)
+	{
+		global $wpdb;
+
+		$offset = ($page - 1) * $limit;
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$sessions = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT * FROM {$wpdb->prefix}ucp_adapter_sessions ORDER BY created_at DESC LIMIT %d, %d",
+				$offset,
+				$limit
+			),
+			ARRAY_A
+		);
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+		$total_count = $wpdb->get_var("SELECT COUNT(*) FROM {$wpdb->prefix}ucp_adapter_sessions");
+
+		return array(
+			'sessions' => $sessions,
+			'total'    => (int) $total_count,
+		);
+	}
+
+	/**
 	 * Generate unique session ID
 	 *
 	 * @return string Session ID.

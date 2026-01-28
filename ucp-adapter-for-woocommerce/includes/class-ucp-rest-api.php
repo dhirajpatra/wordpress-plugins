@@ -132,6 +132,66 @@ class UCP_Adapter_REST_API
 				),
 			)
 		);
+
+		// Product Search endpoint.
+		register_rest_route(
+			self::NAMESPACE,
+			'/product/search',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array(__CLASS__, 'handle_product_search'),
+				'permission_callback' => array(__CLASS__, 'check_api_permission'),
+				'args'                => array(
+					'search' => array(
+						'required'          => true,
+						'type'              => 'string',
+						'sanitize_callback' => 'sanitize_text_field',
+						'description'       => __('Search query', 'ucp-adapter-for-woocommerce'),
+					),
+					'page'   => array(
+						'required'          => false,
+						'type'              => 'integer',
+						'default'           => 1,
+						'sanitize_callback' => 'absint',
+						'description'       => __('Page number', 'ucp-adapter-for-woocommerce'),
+					),
+					'limit'  => array(
+						'required'          => false,
+						'type'              => 'integer',
+						'default'           => 10,
+						'sanitize_callback' => 'absint',
+						'description'       => __('Results per page', 'ucp-adapter-for-woocommerce'),
+					),
+				),
+			)
+		);
+
+		// List Sessions endpoint.
+		register_rest_route(
+			self::NAMESPACE,
+			'/sessions',
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array(__CLASS__, 'handle_list_sessions'),
+				'permission_callback' => array(__CLASS__, 'check_api_permission'),
+				'args'                => array(
+					'page'   => array(
+						'required'          => false,
+						'type'              => 'integer',
+						'default'           => 1,
+						'sanitize_callback' => 'absint',
+						'description'       => __('Page number', 'ucp-adapter-for-woocommerce'),
+					),
+					'limit'  => array(
+						'required'          => false,
+						'type'              => 'integer',
+						'default'           => 10,
+						'sanitize_callback' => 'absint',
+						'description'       => __('Results per page', 'ucp-adapter-for-woocommerce'),
+					),
+				),
+			)
+		);
 	}
 
 	/**
@@ -369,5 +429,97 @@ class UCP_Adapter_REST_API
 		}
 
 		return $current_data;
+	}
+
+	/**
+	 * Handle product search
+	 *
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response|WP_Error
+	 */
+	public static function handle_product_search($request)
+	{
+		$search = $request->get_param('search');
+		$page   = $request->get_param('page');
+		$limit  = $request->get_param('limit');
+
+		// Handle pagination.
+		$page  = $page > 0 ? $page : 1;
+		$limit = ($limit > 0 && $limit <= 100) ? $limit : 10;
+
+		$args = array(
+			'status'   => 'publish',
+			'limit'    => $limit,
+			'page'     => $page,
+			's'        => $search,
+			'orderby'  => 'relevance', // Order by relevance if possible with search
+			'order'    => 'DESC',
+		);
+
+		// Use wc_get_products for better compatibility.
+		$products = wc_get_products($args);
+
+		$results = array();
+
+		foreach ($products as $product) {
+			$image_id  = $product->get_image_id();
+			$image_url = $image_id ? wp_get_attachment_url($image_id) : wc_placeholder_img_src();
+
+			$results[] = array(
+				'id'                => $product->get_id(),
+				'name'              => $product->get_name(),
+				'price'             => $product->get_price(),
+				'regular_price'     => $product->get_regular_price(),
+				'sale_price'        => $product->get_sale_price(),
+				'permalink'         => $product->get_permalink(),
+				'image'             => $image_url,
+				'short_description' => $product->get_short_description(),
+				'sku'               => $product->get_sku(),
+			);
+		}
+
+		$response = array(
+			'success' => true,
+			'data'    => $results,
+			'meta'    => array(
+				'page'   => $page,
+				'limit'  => $limit,
+				'search' => $search,
+				'count'  => count($results),
+			),
+		);
+
+		return new WP_REST_Response($response, 200);
+	}
+
+	/**
+	 * Handle list sessions
+	 *
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response|WP_Error
+	 */
+	public static function handle_list_sessions($request)
+	{
+		$page  = $request->get_param('page');
+		$limit = $request->get_param('limit');
+
+		// Handle pagination.
+		$page  = $page > 0 ? $page : 1;
+		$limit = ($limit > 0 && $limit <= 100) ? $limit : 10;
+
+		$session_handler = UCP_Adapter_Session_Handler::get_instance();
+		$result          = $session_handler->get_sessions($page, $limit);
+
+		$response = array(
+			'success' => true,
+			'data'    => $result['sessions'],
+			'meta'    => array(
+				'page'  => $page,
+				'limit' => $limit,
+				'total' => $result['total'],
+			),
+		);
+
+		return new WP_REST_Response($response, 200);
 	}
 }
