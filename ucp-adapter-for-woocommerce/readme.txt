@@ -4,7 +4,7 @@ Tags: api, rest, commerce, ucp, integration
 Requires at least: 6.9
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires Plugins: woocommerce
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -14,6 +14,29 @@ Universal Commerce Platform REST API adapter providing Session, Update, and Comp
 == Description ==
 
 UCP Adapter For WooCommerce is a powerful WordPress plugin that provides REST API endpoints for Universal Commerce Platform (UCP) integration. It enables seamless communication between your WordPress site and external commerce platforms through secure, standardized API endpoints.
+
+Thank you for using our plugin! This add-on connects your WordPress site to the powerful world of WordPress's Agentic Commerce, allowing you to create automated shopping assistants for your users.
+
+### 🚀 Core Features
+Our plugin leverages WordPress's MCP (Model Context Protocol) servers plugin and the open **Universal Commerce Protocol (UCP)** standard to enable secure, intelligent commerce actions. Here’s what you can build:
+
+*   **Smart Product Discovery:** Enable agents to search products across WordPress merchants, apply filters, and display interactive product cards directly within a chat interface on your site.
+*   **Seamless Checkout:** Allow agents to create checkout sessions, collect buyer information, attach payment details, and complete purchases on behalf of users.
+*   **Order Tracking:** After a purchase, agents can track order status, fulfillment updates, and post-purchase events like refunds or returns.
+
+### 🔗 How It Works
+The plugin acts as a **Platform** within the UCP framework, facilitating secure communication between your users (buyers), WordPress **Merchants**, and payment or credential providers. It implements these key UCP capabilities:
+
+1.  **Discovery → Checkout:** An agent can help a user find a product and instantly retrieve the necessary details to start a checkout session.
+2.  **Checkout Completion:** The agent can securely submit the checkout. If further user action is needed, it can gracefully open a web checkout page.
+3.  **Post-Purchase:** The agent provides ongoing value by fetching real-time updates on order delivery and status changes.
+
+### 💡 Use Case Example
+Imagine a user in your site's chat asking, "Find me a red coffee mug under $20." The plugin-powered agent can:
+*   Query the WordPress Catalog across multiple stores.
+*   Return filtered, interactive results.
+*   Guide the user through selecting a variant, adding it to cart, and checking out—all without leaving your WordPress environment.
+*   Get this client https://github.com/dhirajpatra/adk-agent-gcp/tree/main/ai-agents-adk/ucp_recommendation_system to connect your site with AI agent.
 
 = Key Features =
 
