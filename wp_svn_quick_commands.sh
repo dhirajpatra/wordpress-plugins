@@ -4,23 +4,27 @@
 # ========================================
 
 # STEP 1: Navigate to workspace
-cd ~/Desktop/php/
+cd ~/Desktop/php/svn/
 
 # STEP 2: Checkout SVN repository (enter WordPress.org credentials when prompted)
-svn co https://plugins.svn.wordpress.org/neurorag-agent-chatbot neurorag-svn
+svn co https://plugins.svn.wordpress.org/intelligent-room-booking-system-for-hotel intelligent-room-booking-system-for-hotel
 
 # STEP 3: Enter SVN directory
-cd neurorag-svn
+cd intelligent-room-booking-system-for-hotel
 
 # STEP 4: Copy plugin files to trunk
-cp ~/Desktop/php/neurorag-agent-chatbot/neurorag-agent-chatbot.php trunk/
-cp ~/Desktop/php/neurorag-agent-chatbot/readme.txt trunk/
-cp -r ~/Desktop/php/neurorag-agent-chatbot/css trunk/
-cp -r ~/Desktop/php/neurorag-agent-chatbot/js trunk/
+cp ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/intelligent-room-booking-system-for-hotel.php trunk/
+cp ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/readme.txt trunk/
+cp -r ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/README.md trunk/
+cp -r ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/assets/css trunk/
+cp -r ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/assets/js trunk/
+cp -r ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/admin trunk/
+cp -r ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/includes trunk/
+cp -r ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/public trunk/
 
 # STEP 5: Copy assets (icons, banners, screenshots)
-cp ~/Desktop/php/neurorag-agent-chatbot/assets/*.png assets/
-cp ~/Desktop/php/neurorag-agent-chatbot/assets/*.svg assets/
+cp ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/assets/*.png assets/
+cp ~/Desktop/php/wp-plugings/intelligent-room-booking-system-for-hotel/assets/*.svg assets/
 
 # STEP 6: Check what will be uploaded
 svn status

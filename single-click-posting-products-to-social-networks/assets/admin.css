@@ -1,0 +1,28 @@
+.scppsn-nav-tab-wrapper {
+    margin-bottom: 0;
+}
+
+.scppsn-tab-content {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    border-top: 0;
+}
+
+/* Status Messages */
+.scppsn-status {
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.scppsn-status.success {
+    border-left: 4px solid #46b450;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+}
+
+.scppsn-status.error {
+    border-left: 4px solid #dc3232;
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+}
