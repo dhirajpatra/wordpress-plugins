@@ -1,10 +1,10 @@
-=== Single Click Posting Products to Social Networks ===
+=== ClickPostify - Single Click Social Posting ===
 Contributors: dhirajpatra
 Tags: woocommerce, social media, facebook, pinterest, instagram
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Author: Dhiraj Patra
@@ -14,7 +14,7 @@ Post WooCommerce products to Facebook, Pinterest, X, LinkedIn, YouTube, and Inst
 
 == Description ==
 
-Single Click Posting Products to Social Networks allows you to effortlessly share your WooCommerce products across multiple social media platforms with just one click.
+ClickPostify - Single Click Social Posting allows you to effortlessly share your WooCommerce products across multiple social media platforms with just one click.
 
 Features:
 * Post to 6 major social networks

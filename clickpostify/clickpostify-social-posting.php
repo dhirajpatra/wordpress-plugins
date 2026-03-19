@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Plugin Name: Single Click Posting Products to Social Networks
+ * Plugin Name: ClickPostify - Single Click Social Posting
  * Description: Post WooCommerce products to Facebook, Pinterest, X, LinkedIn, YouTube, and Instagram with a single click.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Dhiraj Patra
  * Author URI: https://github.com/dhirajpatra
- * Text Domain: single-click-posting-products-to-social-networks
+ * Text Domain: clickpostify-social-posting
  * Requires at least: 6.0
  * Tested up to: 6.9
  * Requires PHP: 8.0
@@ -54,7 +54,7 @@ class SCPPSN_Plugin
 
 	public function woocommerce_notice()
 	{
-		echo '<div class="notice notice-error"><p><strong>Single Click Posting Products to Social Networks</strong> requires WooCommerce to be installed and activated.</p></div>';
+		echo '<div class="notice notice-error"><p><strong>ClickPostify - Single Click Social Posting</strong> requires WooCommerce to be installed and activated.</p></div>';
 	}
 
 	public function add_settings_link($links)

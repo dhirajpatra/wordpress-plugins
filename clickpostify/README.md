@@ -1,4 +1,4 @@
-# Single Click Posting Products to Social Networks
+# ClickPostify - Single Click Social Posting
 
 > Post WooCommerce products to Facebook, Pinterest, X (Twitter), LinkedIn, YouTube, and Instagram with a single click.
 
@@ -6,7 +6,7 @@
 [![WooCommerce](https://img.shields.io/badge/WooCommerce-Required-violet.svg)](https://woocommerce.com)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-green.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-**Single Click Posting Products to Social Networks** allows you to effortlessly share your WooCommerce products across multiple social media platforms. Simplify your social media marketing by posting product details, images, and links directly from your product pages.
+**ClickPostify - Single Click Social Posting** allows you to effortlessly share your WooCommerce products across multiple social media platforms. Simplify your social media marketing by posting product details, images, and links directly from your product pages.
 
 ## Features
 
@@ -33,7 +33,7 @@
 
 ## Installation
 
-1. Upload the plugin files to the `/wp-content/plugins/single-click-posting-products-to-social-networks/` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/clickpostify-social-posting/` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the **Plugins** screen in WordPress.
 3. Navigate to **Social Networks > Settings** to configure your API credentials.
 
